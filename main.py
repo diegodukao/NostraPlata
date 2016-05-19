@@ -11,9 +11,9 @@ Window.clearcolor = (1, 1, 1, 1)
 from kivy.app import App
 
 
-class NostraPlataApp(App):
+class NostraPlata(App):
     pass
 
 
 if __name__ == "__main__":
-    NostraPlataApp().run()
+    NostraPlata().run()
