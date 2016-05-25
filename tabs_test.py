@@ -37,6 +37,24 @@ Builder.load_string('''
         ActionOverflow:
         ActionButton:
             text: 'Btn1'
+
+# <AndroidTabsBar>:
+#     canvas:
+#         Color:
+#             rgba: 0,0,0,.3
+#         Rectangle:
+#             pos: self.pos[0], self.pos[1] - 1
+#             size: self.size[0], 1
+#         Color:
+#             rgba: 0,0,0,.2
+#         Rectangle:
+#             pos: self.pos[0], self.pos[1] - 2
+#             size: self.size[0], 1
+#         Color:
+#             rgba: 0,0,0,.05
+#         Rectangle:
+#             pos: self.pos[0], self.pos[1] - 3
+#             size: self.size[0], 1
 ''')
 
 
