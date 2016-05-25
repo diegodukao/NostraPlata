@@ -9,15 +9,23 @@ from kivy.core.window import Window
 Window.clearcolor = (1, 1, 1, 1)
 
 from kivy.app import App
-from kivy.uix.listview import ListItemButton
+from kivy.garden.androidtabs import AndroidTabsBase, AndroidTabs
+from kivy.uix.boxlayout import BoxLayout
 
 
-class CustomListItemButton(ListItemButton):
+class MainTab(BoxLayout, AndroidTabsBase):
     pass
 
 
 class NostraPlata(App):
-    pass
+
+    def build(self):
+        tabs = AndroidTabs()
+        main_tab = MainTab(text="Main")
+
+        tabs.add_widget(main_tab)
+
+        return tabs
 
 
 if __name__ == "__main__":
