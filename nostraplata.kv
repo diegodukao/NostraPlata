@@ -27,4 +27,4 @@ MainScreen:
 
     ListView:
         adapter:
-            ListAdapter(data=[str(index) for index in range(30)], cls=ListItemButton)
+            ListAdapter(data=["History number %i" % index for index in range(30)], cls=ListItemButton)
