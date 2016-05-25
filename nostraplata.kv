@@ -2,29 +2,40 @@
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
 
-MainScreen:
+<Bar>:
+    pos_hint: {'top':1}
+    ActionView:
+        use_separator: True
+        ActionPrevious:
+            title: 'Nostra Plata'
+            with_previous: False
+        ActionOverflow:
+        ActionButton:
+            text: 'Btn1'
 
 <ListItemButton>:
-    background_color: 0, 0, 1, 1
     selected_color: 0.5, 0.2, 1, 1
-    deselected_color: 1, 1, 1, 1
+    deselected_color: 0, 1, 1, 1
     size: root.width, '50dp'
     font_size: '22dp'
 
-<MainScreen@BoxLayout>:
-    orientation: 'vertical'
-
-    ActionBar:
-        pos_hint: {'top':1}
-        ActionView:
-            use_separator: True
-            ActionPrevious:
-                title: 'Nostra Plata'
-                with_previous: False
-            ActionOverflow:
-            ActionButton:
-                text: 'Btn1'
-
+<MainTab>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
     ListView:
         adapter:
             ListAdapter(data=["History number %i" % index for index in range(30)], cls=ListItemButton)
+
+<HistoryTab>:
+    canvas:
+        Color:
+            rgba: 0, .5, .5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        text: "reagan!"
