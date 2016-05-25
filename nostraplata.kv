@@ -4,6 +4,13 @@
 
 MainScreen:
 
+<ListItemButton>:
+    background_color: 0, 0, 1, 1
+    selected_color: 0.5, 0.2, 1, 1
+    deselected_color: 1, 1, 1, 1
+    size: root.width, '50dp'
+    font_size: '22dp'
+
 <MainScreen@BoxLayout>:
     orientation: 'vertical'
 
@@ -20,4 +27,4 @@ MainScreen:
 
     ListView:
         adapter:
-            ListAdapter(data=[str(index) for index in range(60)], cls=ListItemButton)
+            ListAdapter(data=[str(index) for index in range(30)], cls=ListItemButton)

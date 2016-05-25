@@ -9,6 +9,11 @@ from kivy.core.window import Window
 Window.clearcolor = (1, 1, 1, 1)
 
 from kivy.app import App
+from kivy.uix.listview import ListItemButton
+
+
+class CustomListItemButton(ListItemButton):
+    pass
 
 
 class NostraPlata(App):
