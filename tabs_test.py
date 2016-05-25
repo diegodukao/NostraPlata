@@ -6,35 +6,33 @@ from kivy.garden.androidtabs import AndroidTabsBase, AndroidTabs
 
 
 Builder.load_string('''
-<MyTab>:
+<Tab1>:
     canvas:
         Color:
-            rgba: 1, 1, 1, 1
+            rgba: .5, 0, .5, 1
         Rectangle:
             pos: self.pos
             size: self.size
+    Label:
+        text: "rollan!"
 
-<AndroidTabsBar>:
+<Tab2>:
     canvas:
         Color:
-            rgba: 0,0,0,.3
+            rgba: 0, .5, .5, 1
         Rectangle:
-            pos: self.pos[0], self.pos[1] - 1
-            size: self.size[0], 1
-        Color:
-            rgba: 0,0,0,.2
-        Rectangle:
-            pos: self.pos[0], self.pos[1] - 2
-            size: self.size[0], 1
-        Color:
-            rgba: 0,0,0,.05
-        Rectangle:
-            pos: self.pos[0], self.pos[1] - 3
-            size: self.size[0], 1
+            pos: self.pos
+            size: self.size
+    Label:
+        text: "reagan!"
 ''')
 
 
-class MyTab(BoxLayout, AndroidTabsBase):
+class Tab1(BoxLayout, AndroidTabsBase):
+    pass
+
+
+class Tab2(BoxLayout, AndroidTabsBase):
     pass
 
 
@@ -43,10 +41,11 @@ class Example(App):
     def build(self):
 
         android_tabs = AndroidTabs()
+        tab1 = Tab1(text="Status")
+        tab2 = Tab2(text="History")
 
-        for n in range(1, 3):
-            tab = MyTab(text='TAB %s' % n)
-            android_tabs.add_widget(tab)
+        android_tabs.add_widget(tab1)
+        android_tabs.add_widget(tab2)
 
         return android_tabs
 
