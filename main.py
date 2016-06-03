@@ -14,7 +14,15 @@ from kivy.uix.actionbar import ActionBar
 from kivy.uix.boxlayout import BoxLayout
 
 
+class MainScreen(BoxLayout):
+    pass
+
+
 class Bar(ActionBar):
+    pass
+
+
+class Tabs(AndroidTabs):
     pass
 
 
@@ -27,22 +35,8 @@ class HistoryTab(BoxLayout, AndroidTabsBase):
 
 
 class NostraPlata(App):
+    pass
 
-    def build(self):
-        bar = Bar()
-
-        tabs = AndroidTabs()
-        tab1 = MainTab(text="Status")
-        tab2 = HistoryTab(text="History")
-
-        tabs.add_widget(tab1)
-        tabs.add_widget(tab2)
-
-        main_screen = BoxLayout(orientation="vertical")
-        main_screen.add_widget(bar)
-        main_screen.add_widget(tabs)
-
-        return main_screen
 
 if __name__ == "__main__":
     NostraPlata().run()
