@@ -4,10 +4,14 @@
 
 MainScreen:
 
+
 <MainScreen>:
+	tabs: tabs_widget
     orientation: "vertical"
     Bar:
     Tabs:
+		id: tabs_widget
+
 
 <Bar>:
     pos_hint: {'top':1}
@@ -20,12 +24,20 @@ MainScreen:
         ActionButton:
             text: 'Btn1'
 
+
 <Tabs>:
+	main: main_tab
+	history: history_tab
+
     MainTab:
+		id: main_tab
     HistoryTab:
+		id: history_tab
+
 
 <MainTab>:
     text: "Status"
+	listview: main_listview
     canvas:
         Color:
             rgba: 1, 1, 1, 1
@@ -33,14 +45,17 @@ MainScreen:
             pos: self.pos
             size: self.size
     ListView:
+		id: main_listview
         adapter:
-            ListAdapter(data=["History number %i" % index for index in range(30)], cls=ListItemButton)
+            ListAdapter(data=[], cls=ListItemButton)
+
 
 <ListItemButton>:
     selected_color: 0.5, 0.2, 1, 1
     deselected_color: 0, 1, 1, 1
     size: root.width, '50dp'
     font_size: '22dp'
+
 
 <HistoryTab>:
     text: "History"
@@ -52,5 +67,4 @@ MainScreen:
             size: self.size
     Label:
         text: "reagan!"
-
 

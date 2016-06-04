@@ -27,7 +27,10 @@ class Tabs(AndroidTabs):
 
 
 class MainTab(BoxLayout, AndroidTabsBase):
-    pass
+
+    def populate_listview(self):
+        items = ["History number %i" % index for index in range(30)]
+        self.listview.adapter.data = items
 
 
 class HistoryTab(BoxLayout, AndroidTabsBase):
@@ -35,8 +38,9 @@ class HistoryTab(BoxLayout, AndroidTabsBase):
 
 
 class NostraPlata(App):
-    pass
 
+    def on_start(self):
+        self.root.tabs.main.populate_listview()
 
 if __name__ == "__main__":
     NostraPlata().run()
