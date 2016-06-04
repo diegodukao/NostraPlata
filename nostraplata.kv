@@ -8,6 +8,7 @@ MainScreen:
 <MainScreen>:
 	tabs: tabs_widget
     orientation: "vertical"
+
     Bar:
     Tabs:
 		id: tabs_widget
@@ -15,6 +16,7 @@ MainScreen:
 
 <Bar>:
     pos_hint: {'top':1}
+
     ActionView:
         use_separator: True
         ActionPrevious:
@@ -38,6 +40,7 @@ MainScreen:
 <MainTab>:
     text: "Status"
 	listview: main_listview
+
     canvas:
         Color:
             rgba: 1, 1, 1, 1
@@ -59,6 +62,7 @@ MainScreen:
 
 <HistoryTab>:
     text: "History"
+
     canvas:
         Color:
             rgba: 0, .5, .5, 1
