@@ -20,6 +20,14 @@ NostraRoot:
 		id: tabs_widget
 
 
+<AddTransactionScreen>:
+    Label:
+        text: "rolou!"
+    Button:
+        text: "OK"
+        on_press: app.root.show_main_screen()
+
+
 <Bar>:
     pos_hint: {'top':1}
 
@@ -31,6 +39,7 @@ NostraRoot:
         ActionOverflow:
         ActionButton:
             text: 'Btn1'
+            on_press: app.root.show_add_transaction_screen()
 
 
 <Tabs>:

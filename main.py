@@ -15,10 +15,21 @@ from kivy.uix.boxlayout import BoxLayout
 
 
 class NostraRoot(BoxLayout):
-    pass
+
+    def show_main_screen(self):
+        self.clear_widgets()
+        self.add_widget(MainScreen())
+
+    def show_add_transaction_screen(self):
+        self.clear_widgets()
+        self.add_widget(AddTransactionScreen())
 
 
 class MainScreen(BoxLayout):
+    pass
+
+
+class AddTransactionScreen(BoxLayout):
     pass
 
 
