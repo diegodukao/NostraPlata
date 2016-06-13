@@ -2,7 +2,13 @@
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
 
-MainScreen:
+NostraRoot:
+
+<NostraRoot>:
+    main: main_screen
+
+    MainScreen:
+        id: main_screen
 
 
 <MainScreen>:
@@ -28,18 +34,18 @@ MainScreen:
 
 
 <Tabs>:
-	main: main_tab
+	dashboard: dashboard_tab
 	history: history_tab
 
-    MainTab:
-		id: main_tab
+    DashboardTab:
+		id: dashboard_tab
     HistoryTab:
 		id: history_tab
 
 
-<MainTab>:
+<DashboardTab>:
     text: "Status"
-	listview: main_listview
+	listview: dashboard_listview
 
     canvas:
         Color:
@@ -48,7 +54,7 @@ MainScreen:
             pos: self.pos
             size: self.size
     ListView:
-		id: main_listview
+		id: dashboard_listview
         adapter:
             ListAdapter(data=[], cls=ListItemButton)
 

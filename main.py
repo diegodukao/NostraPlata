@@ -14,6 +14,10 @@ from kivy.uix.actionbar import ActionBar
 from kivy.uix.boxlayout import BoxLayout
 
 
+class NostraRoot(BoxLayout):
+    pass
+
+
 class MainScreen(BoxLayout):
     pass
 
@@ -26,7 +30,7 @@ class Tabs(AndroidTabs):
     pass
 
 
-class MainTab(BoxLayout, AndroidTabsBase):
+class DashboardTab(BoxLayout, AndroidTabsBase):
 
     def populate_listview(self):
         items = ["History number %i" % index for index in range(30)]
@@ -40,7 +44,7 @@ class HistoryTab(BoxLayout, AndroidTabsBase):
 class NostraPlata(App):
 
     def on_start(self):
-        self.root.tabs.main.populate_listview()
+        self.root.main.tabs.dashboard.populate_listview()
 
 if __name__ == "__main__":
     NostraPlata().run()
