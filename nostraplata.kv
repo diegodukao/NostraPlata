@@ -6,26 +6,11 @@ NostraRoot:
 
 <NostraRoot>:
     main: main_screen
-
-    MainScreen:
-        id: main_screen
-
-
-<MainScreen>:
-	tabs: tabs_widget
     orientation: "vertical"
 
     Bar:
-    Tabs:
-		id: tabs_widget
-
-
-<AddTransactionScreen>:
-    Label:
-        text: "rolou!"
-    Button:
-        text: "OK"
-        on_press: app.root.show_main_screen()
+    MainScreen:
+        id: main_screen
 
 
 <Bar>:
@@ -42,7 +27,7 @@ NostraRoot:
             on_press: app.root.show_add_transaction_screen()
 
 
-<Tabs>:
+<MainScreen>:
 	dashboard: dashboard_tab
 	history: history_tab
 
@@ -50,6 +35,16 @@ NostraRoot:
 		id: dashboard_tab
     HistoryTab:
 		id: history_tab
+
+
+<AddTransactionScreen>:
+    Label:
+        text: "rolou!"
+    Button:
+        text: "OK"
+        on_press: app.root.show_main_screen()
+
+
 
 
 <DashboardTab>:

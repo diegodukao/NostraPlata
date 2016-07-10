@@ -25,7 +25,7 @@ class NostraRoot(BoxLayout):
         self.add_widget(AddTransactionScreen())
 
 
-class MainScreen(BoxLayout):
+class MainScreen(AndroidTabs):
     pass
 
 
@@ -34,10 +34,6 @@ class AddTransactionScreen(BoxLayout):
 
 
 class Bar(ActionBar):
-    pass
-
-
-class Tabs(AndroidTabs):
     pass
 
 
@@ -55,7 +51,7 @@ class HistoryTab(BoxLayout, AndroidTabsBase):
 class NostraPlata(App):
 
     def on_start(self):
-        self.root.main.tabs.dashboard.populate_listview()
+        self.root.main.dashboard.populate_listview()
 
 if __name__ == "__main__":
     NostraPlata().run()
