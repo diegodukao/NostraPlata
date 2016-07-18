@@ -1,0 +1,48 @@
+#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+
+<MainScreen>:
+	dashboard: dashboard_tab
+	history: history_tab
+
+    DashboardTab:
+		id: dashboard_tab
+    HistoryTab:
+		id: history_tab
+
+
+
+<DashboardTab>:
+    text: "Dashboard"
+	listview: dashboard_listview
+
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ListView:
+		id: dashboard_listview
+        adapter:
+            ListAdapter(data=[], cls=ListItemButton)
+
+
+<ListItemButton>:
+    selected_color: 0.5, 0.2, 1, 1
+    deselected_color: 0, 1, 1, 1
+    size: root.width, '50dp'
+    font_size: '22dp'
+
+
+<HistoryTab>:
+    text: "History"
+
+    canvas:
+        Color:
+            rgba: 0, .5, .5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        text: "reagan!"
