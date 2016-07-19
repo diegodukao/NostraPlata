@@ -22,18 +22,30 @@ Builder.load_file('new_loan_screen.kv')
 
 class NostraRoot(BoxLayout):
     main_screen_widget = ObjectProperty()
+    members_screen_widget = ObjectProperty()
     new_loan_screen_widget = ObjectProperty()
+    current_screen = ObjectProperty()
 
     def show_main_screen(self):
-        self.remove_widget(self.new_loan_screen_widget)
+        self.remove_widget(self.current_screen)
         self.add_widget(self.main_screen_widget)
+        self.current_screen = self.main_screen_widget
+
+    def show_members_screen(self):
+        self.remove_widget(self.current_screen)
+
+        if not self.members_screen_widget:
+            self.members_screen_widget = MembersScreen()
+        self.add_widget(self.members_screen_widget)
+        self.current_screen = self.members_screen_widget
 
     def show_new_loan_screen(self):
-        self.remove_widget(self.main_screen_widget)
+        self.remove_widget(self.current_screen)
 
         if not self.new_loan_screen_widget:
-            self.new_loan_screen_widget = MembersScreen()
+            self.new_loan_screen_widget = NewLoanScreen()
         self.add_widget(self.new_loan_screen_widget)
+        self.current_screen = self.new_loan_screen_widget
 
 
 class MainScreen(AndroidTabs):
@@ -72,6 +84,7 @@ class NostraPlata(App):
     def on_start(self):
         self.root.main.dashboard.populate_listview()
         self.root.main_screen_widget = self.root.main
+        self.root.current_screen = self.root.main
 
 if __name__ == "__main__":
     NostraPlata().run()

@@ -15,7 +15,12 @@
             ListAdapter(data=['fulana', 'beltrano', 'cicrane'],
             cls=ListItemButton)
 
+<ListItemButton>:
+    on_press: app.root.show_new_loan_screen()
+
 <NewLoanScreen>:
+    orientation: "vertical"
+
     Label:
         text: "Add New Loan"
         height: "46dp"
@@ -24,9 +29,9 @@
         height: "46dp"
         size_hint_y: None
         Label:
-            text: "User"
-        Label:
             text: "Amount"
+        Label:
+            text: "Type"
     BoxLayout:
         height: "33dp"
         size_hint_y: None
