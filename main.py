@@ -14,6 +14,7 @@ from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivy.uix.actionbar import ActionBar
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.listview import ListItemButton
 
 Builder.load_file('main_screen.kv')
 Builder.load_file('new_loan_screen.kv')
@@ -31,11 +32,19 @@ class NostraRoot(BoxLayout):
         self.remove_widget(self.main_screen_widget)
 
         if not self.new_loan_screen_widget:
-            self.new_loan_screen_widget = NewLoanScreen()
+            self.new_loan_screen_widget = MembersScreen()
         self.add_widget(self.new_loan_screen_widget)
 
 
 class MainScreen(AndroidTabs):
+    pass
+
+
+class MembersScreen(BoxLayout):
+    pass
+
+
+class MemberButton(ListItemButton):
     pass
 
 

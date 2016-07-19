@@ -1,6 +1,37 @@
+#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+
+
+<MembersScreen>:
+    orientation: "vertical"
+
+    Label:
+        text: "Members"
+        height: "46dp"
+        size_hint_y: None
+    ListView:
+		id: members_listview
+        adapter:
+            ListAdapter(data=['fulana', 'beltrano', 'cicrane'],
+            cls=ListItemButton)
+
 <NewLoanScreen>:
     Label:
-        text: "rolou!"
+        text: "Add New Loan"
+        height: "46dp"
+        size_hint_y: None
+    BoxLayout:
+        height: "46dp"
+        size_hint_y: None
+        Label:
+            text: "User"
+        Label:
+            text: "Amount"
+    BoxLayout:
+        height: "33dp"
+        size_hint_y: None
+        TextInput:
+        TextInput:
     Button:
         text: "OK"
         on_press: app.root.show_main_screen()
