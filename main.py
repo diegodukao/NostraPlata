@@ -61,7 +61,10 @@ class MemberButton(ListItemButton):
 
 
 class NewLoanScreen(BoxLayout):
-    pass
+    amount_input = ObjectProperty()
+
+    def save_loan(self):
+        print(self.amount_input.text)
 
 
 class Bar(ActionBar):
