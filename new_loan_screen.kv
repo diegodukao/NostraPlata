@@ -26,6 +26,7 @@
         text: "Add New Loan"
         height: "46dp"
         size_hint_y: None
+
     BoxLayout:
         height: "46dp"
         size_hint_y: None
@@ -33,6 +34,7 @@
             text: "Amount"
         Label:
             text: "Type"
+
     BoxLayout:
         height: "33dp"
         size_hint_y: None
@@ -41,12 +43,13 @@
             size_hint_x: 1
         ToggleButton:
             text: "Lend"
-            group: "type"
+            group: "loan_type"
             size_hint_x: 0.5
         ToggleButton:
             text: "Borrow"
-            group: "type"
+            group: "loan_type"
             size_hint_x: 0.5
+
     Button:
         text: "OK"
         on_press: root.save_loan()

@@ -13,6 +13,7 @@ from kivy.garden.androidtabs import AndroidTabsBase, AndroidTabs
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivy.uix.actionbar import ActionBar
+from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.listview import ListItemButton
 
@@ -64,7 +65,12 @@ class NewLoanScreen(BoxLayout):
     amount_input = ObjectProperty()
 
     def save_loan(self):
-        print(self.amount_input.text)
+        loan_type_btns = ToggleButtonBehavior.get_widgets("loan_type")
+        pressed_btns = [btn.text for btn in loan_type_btns if btn.state == "down"]
+        if len(pressed_btns) == 1:
+            loan_type = pressed_btns[0]
+            print(self.amount_input.text)
+            print(loan_type)
 
 
 class Bar(ActionBar):
