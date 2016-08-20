@@ -16,13 +16,15 @@
             cls=ListItemButton)
 
 <ListItemButton>:
-    on_press: app.root.show_new_loan_screen()
+    on_press: app.root.show_new_loan_screen(self.text)
 
 <NewLoanScreen>:
     orientation: "vertical"
+    title: title_lable
     amount_input: amount_text_input
 
     Label:
+        id: title_lable
         text: "Add New Loan"
         height: "46dp"
         size_hint_y: None
