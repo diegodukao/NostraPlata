@@ -74,6 +74,12 @@ class NewLoanScreen(BoxLayout):
         pressed_btns = [btn.text for btn in loan_type_btns
                         if btn.state == "down"]
 
+        # Note in kivy docs:
+        # https://kivy.org/docs/api-kivy.uix.behaviors.togglebutton.html
+        # "Always release the result of this method! Holding a reference to any
+        # of these widgets can prevent them from being garbage collected."
+        del loan_type_btns
+
         if len(pressed_btns) == 1:
             loan_type = pressed_btns[0]
             print(self.friend_name)
