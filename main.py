@@ -17,6 +17,8 @@ from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.listview import ListItemButton
 
+import api
+
 Builder.load_file('main_screen.kv')
 Builder.load_file('new_loan_screen.kv')
 
@@ -81,10 +83,9 @@ class NewLoanScreen(BoxLayout):
         del loan_type_btns
 
         if len(pressed_btns) == 1:
-            loan_type = pressed_btns[0]
-            print(self.friend_name)
-            print(loan_type)
-            print(self.amount_input.text)
+            loan_type = pressed_btns[0].lower()
+            amount = self.amount_input.text
+            api.save_loan(self.friend_name, amount, loan_type)
 
 
 class Bar(ActionBar):
