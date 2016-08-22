@@ -17,7 +17,7 @@ from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.listview import ListItemButton
 
-import api
+from services import api
 
 Builder.load_file('main_screen.kv')
 Builder.load_file('new_loan_screen.kv')
