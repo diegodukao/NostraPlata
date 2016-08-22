@@ -1,7 +1,16 @@
+import json
 import requests
 
 USER = "tester"
 URL = "http://localhost:5000/"
+
+
+def get_user_balance():
+    user = USER
+    response = requests.get("{}transaction/".format(URL), data={'user': user})
+    response_json = json.loads(response.text)
+
+    return response_json['data']['balance']
 
 
 def save_loan(friend, amount, type):
