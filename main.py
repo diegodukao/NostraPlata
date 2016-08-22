@@ -93,6 +93,7 @@ class Bar(ActionBar):
 
 
 class DashboardTab(BoxLayout, AndroidTabsBase):
+    balance_label = ObjectProperty()
 
     def populate_listview(self):
         items = ["History number %i" % index for index in range(30)]
@@ -109,6 +110,9 @@ class NostraPlata(App):
         self.root.main.dashboard.populate_listview()
         self.root.main_screen = self.root.main
         self.root.current_screen = self.root.main
+
+        balance = api.get_user_balance()
+        self.root.main.dashboard.balance_label.text = "Saldo: {}".format(str(balance))
 
 if __name__ == "__main__":
     NostraPlata().run()
