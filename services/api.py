@@ -1,7 +1,7 @@
 import json
 import requests
 
-USER = "tester"
+USER = "tester2"
 URL = "http://localhost:5000/"
 
 

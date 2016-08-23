@@ -30,6 +30,8 @@ class NostraRoot(BoxLayout):
     current_screen = ObjectProperty()
 
     def show_main_screen(self):
+        self.main.show_balance()
+
         self.remove_widget(self.current_screen)
         self.add_widget(self.main_screen)
         self.current_screen = self.main_screen
@@ -55,7 +57,12 @@ class NostraRoot(BoxLayout):
 
 
 class MainScreen(AndroidTabs):
-    pass
+
+    def show_balance(self):
+        balance = api.get_user_balance()
+
+        if balance:
+            self.dashboard.balance_label.text = "Saldo: {}".format(str(balance))
 
 
 class MembersScreen(BoxLayout):
@@ -86,6 +93,7 @@ class NewLoanScreen(BoxLayout):
             loan_type = pressed_btns[0].lower()
             amount = self.amount_input.text
             api.save_loan(self.friend_name, amount, loan_type)
+            self.parent.show_main_screen()
 
 
 class Bar(ActionBar):
@@ -111,8 +119,7 @@ class NostraPlata(App):
         self.root.main_screen = self.root.main
         self.root.current_screen = self.root.main
 
-        balance = api.get_user_balance()
-        self.root.main.dashboard.balance_label.text = "Saldo: {}".format(str(balance))
+        self.root.main.show_balance()
 
 if __name__ == "__main__":
     NostraPlata().run()
