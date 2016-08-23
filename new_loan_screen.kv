@@ -16,15 +16,19 @@
             cls=ListItemButton)
 
 <ListItemButton>:
-    on_press: app.root.show_new_loan_screen()
+    on_press: app.root.show_new_loan_screen(self.text)
 
 <NewLoanScreen>:
     orientation: "vertical"
+    title: title_lable
+    amount_input: amount_text_input
 
     Label:
+        id: title_lable
         text: "Add New Loan"
         height: "46dp"
         size_hint_y: None
+
     BoxLayout:
         height: "46dp"
         size_hint_y: None
@@ -32,22 +36,25 @@
             text: "Amount"
         Label:
             text: "Type"
+
     BoxLayout:
         height: "33dp"
         size_hint_y: None
         TextInput:
+            id: amount_text_input
             size_hint_x: 1
         ToggleButton:
             text: "Lend"
-            group: "type"
+            group: "loan_type"
             size_hint_x: 0.5
         ToggleButton:
             text: "Borrow"
-            group: "type"
+            group: "loan_type"
             size_hint_x: 0.5
+
     Button:
         text: "OK"
-        on_press: app.root.show_main_screen()
+        on_press: root.save_loan()
         size_hint_x: 1
 
 

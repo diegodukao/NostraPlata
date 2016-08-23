@@ -15,14 +15,21 @@
 
 <DashboardTab>:
     text: "Dashboard"
+    orientation: "vertical"
 	listview: dashboard_listview
+    balance_label: balance_label
 
-    canvas:
-        Color:
-            rgba: 1, 1, 1, 1
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas:
+    #     Color:
+    #         rgba: 1, 1, 1, 1
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+    Label:
+        id: balance_label
+        text: "Saldo"
+        height: "46dp"
+        size_hint_y: None
     ListView:
 		id: dashboard_listview
         adapter:
