@@ -18,9 +18,9 @@ from kivy.uix.boxlayout import BoxLayout
 
 from services import api
 
-Builder.load_file('main_screen.kv')
-Builder.load_file('friends_screen.kv')
-Builder.load_file('new_loan_screen.kv')
+Builder.load_file('./ui/main_screen.kv')
+Builder.load_file('./ui/friends_screen.kv')
+Builder.load_file('./ui/new_loan_screen.kv')
 
 
 class NostraRoot(BoxLayout):
