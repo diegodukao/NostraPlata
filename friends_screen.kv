@@ -1,0 +1,20 @@
+#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+
+
+<FriendsScreen>:
+    orientation: "vertical"
+
+    Label:
+        text: "Friends"
+        height: "46dp"
+        size_hint_y: None
+    ListView:
+		id: friends_listview
+        adapter:
+            ListAdapter(data=['fulana', 'beltrano', 'cicrane'],
+            cls=ListItemButton)
+
+<ListItemButton>:
+    on_press: app.root.show_new_loan_screen(self.text)
+

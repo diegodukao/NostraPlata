@@ -15,11 +15,11 @@ from kivy.properties import ObjectProperty
 from kivy.uix.actionbar import ActionBar
 from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.listview import ListItemButton
 
 from services import api
 
 Builder.load_file('main_screen.kv')
+Builder.load_file('friends_screen.kv')
 Builder.load_file('new_loan_screen.kv')
 
 
@@ -67,10 +67,6 @@ class MainScreen(AndroidTabs):
 
 
 class FriendsScreen(BoxLayout):
-    pass
-
-
-class FriendButton(ListItemButton):
     pass
 
 
