@@ -2,15 +2,15 @@
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
 
-<MembersScreen>:
+<FriendsScreen>:
     orientation: "vertical"
 
     Label:
-        text: "Members"
+        text: "Friends"
         height: "46dp"
         size_hint_y: None
     ListView:
-		id: members_listview
+		id: friends_listview
         adapter:
             ListAdapter(data=['fulana', 'beltrano', 'cicrane'],
             cls=ListItemButton)

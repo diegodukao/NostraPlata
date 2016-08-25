@@ -25,7 +25,7 @@ Builder.load_file('new_loan_screen.kv')
 
 class NostraRoot(BoxLayout):
     main_screen = ObjectProperty()
-    members_screen = ObjectProperty()
+    friends_screen = ObjectProperty()
     new_loan_screen = ObjectProperty()
     current_screen = ObjectProperty()
 
@@ -36,13 +36,14 @@ class NostraRoot(BoxLayout):
         self.add_widget(self.main_screen)
         self.current_screen = self.main_screen
 
-    def show_members_screen(self):
+    def show_friends_screen(self):
         self.remove_widget(self.current_screen)
 
-        if not self.members_screen:
-            self.members_screen = MembersScreen()
-        self.add_widget(self.members_screen)
-        self.current_screen = self.members_screen
+        if not self.friends_screen:
+            self.friends_screen = FriendsScreen()
+
+        self.add_widget(self.friends_screen)
+        self.current_screen = self.friends_screen
 
     def show_new_loan_screen(self, friend_name):
         self.remove_widget(self.current_screen)
@@ -65,11 +66,11 @@ class MainScreen(AndroidTabs):
             self.dashboard.balance_label.text = "Saldo: {}".format(str(balance))
 
 
-class MembersScreen(BoxLayout):
+class FriendsScreen(BoxLayout):
     pass
 
 
-class MemberButton(ListItemButton):
+class FriendButton(ListItemButton):
     pass
 
 
