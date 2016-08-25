@@ -42,6 +42,7 @@ class NostraRoot(BoxLayout):
         if not self.friends_screen:
             self.friends_screen = FriendsScreen()
 
+        self.friends_screen.populate_list()
         self.add_widget(self.friends_screen)
         self.current_screen = self.friends_screen
 
@@ -67,7 +68,11 @@ class MainScreen(AndroidTabs):
 
 
 class FriendsScreen(BoxLayout):
-    pass
+
+    def populate_list(self):
+        friends = api.get_friends()
+        names = [name for name, balance in friends.items()]
+        self.friends_list.adapter.data = names
 
 
 class NewLoanScreen(BoxLayout):

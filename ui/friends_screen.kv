@@ -4,6 +4,7 @@
 
 <FriendsScreen>:
     orientation: "vertical"
+    friends_list: friends_listview
 
     Label:
         text: "Friends"
@@ -12,8 +13,7 @@
     ListView:
 		id: friends_listview
         adapter:
-            ListAdapter(data=['fulana', 'beltrano', 'cicrane'],
-            cls=ListItemButton)
+            ListAdapter(data=[], cls=ListItemButton)
 
 <ListItemButton>:
     on_press: app.root.show_new_loan_screen(self.text)
