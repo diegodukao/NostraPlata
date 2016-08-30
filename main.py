@@ -114,8 +114,7 @@ class DashboardTab(BoxLayout, AndroidTabsBase):
         return {'text': "{}: {}".format(name, balance),
                 'name': name, 'balance': balance}
 
-    def populate_listview(self):
-        friends = api.get_friends()
+    def populate_listview(self, friends):
         items = [(name, balance) for name, balance in friends.items()]
         self.listview.adapter.data = items
 
@@ -128,7 +127,7 @@ class NostraPlata(App):
 
     def on_start(self):
         self.root.get_friends()
-        self.root.main.dashboard.populate_listview()
+        self.root.main.dashboard.populate_listview(self.root.friends)
         self.root.main_screen = self.root.main
         self.root.current_screen = self.root.main
 
