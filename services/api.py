@@ -10,7 +10,7 @@ def get_friends():
     response_json = json.loads(response.text)
     friends = response_json['users']
 
-    # api returns current user together with friends
+    # needed because api returns current user together with friends
     friends.pop(USER)
 
     return friends

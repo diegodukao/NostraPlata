@@ -105,8 +105,14 @@ class Bar(ActionBar):
 class DashboardTab(BoxLayout, AndroidTabsBase):
     balance_label = ObjectProperty()
 
+    def args_converter(self, index, data_item):
+        name, balance = data_item
+        return {'text': "{}: {}".format(name, balance),
+                'name': name, 'balance': balance}
+
     def populate_listview(self):
-        items = ["History number %i" % index for index in range(30)]
+        friends = api.get_friends()
+        items = [(name, balance) for name, balance in friends.items()]
         self.listview.adapter.data = items
 
 

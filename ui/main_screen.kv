@@ -34,15 +34,16 @@
     ListView:
 		id: dashboard_listview
         adapter:
-            ListAdapter(data=[], cls=widgets.FriendButton)
+            ListAdapter(data=[], cls=widgets.FriendButton, args_converter=root.args_converter)
 
 
 <FriendButton>:
     selected_color: 0.5, 0.2, 1, 1
     deselected_color: 0, 1, 1, 1
-    size: root.width, '50dp'
+    height: '50dp'
+	size_hint_y: None
     font_size: '22dp'
-    on_press: app.root.show_new_loan_screen(self.text)
+    on_press: app.root.show_new_loan_screen(self.name)
 
 
 <HistoryTab>:
