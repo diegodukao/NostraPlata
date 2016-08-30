@@ -11,38 +11,46 @@ Config.set('graphics', 'height', '700')
 from kivy.app import App
 from kivy.garden.androidtabs import AndroidTabsBase, AndroidTabs
 from kivy.lang import Builder
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, DictProperty
 from kivy.uix.actionbar import ActionBar
 from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.listview import ListItemButton
 
 from services import api
 
-Builder.load_file('main_screen.kv')
-Builder.load_file('new_loan_screen.kv')
+Builder.load_file('./ui/main_screen.kv')
+Builder.load_file('./ui/friends_screen.kv')
+Builder.load_file('./ui/new_loan_screen.kv')
 
 
 class NostraRoot(BoxLayout):
     main_screen = ObjectProperty()
-    members_screen = ObjectProperty()
+    friends_screen = ObjectProperty()
     new_loan_screen = ObjectProperty()
     current_screen = ObjectProperty()
+    friends = DictProperty()
+
+    def get_friends(self):
+        self.friends = api.get_friends()
 
     def show_main_screen(self):
         self.main.show_balance()
+        self.get_friends()
+        self.main.dashboard.populate_listview(self.friends)
 
         self.remove_widget(self.current_screen)
         self.add_widget(self.main_screen)
         self.current_screen = self.main_screen
 
-    def show_members_screen(self):
+    def show_friends_screen(self):
         self.remove_widget(self.current_screen)
 
-        if not self.members_screen:
-            self.members_screen = MembersScreen()
-        self.add_widget(self.members_screen)
-        self.current_screen = self.members_screen
+        if not self.friends_screen:
+            self.friends_screen = FriendsScreen()
+
+        self.friends_screen.populate_list()
+        self.add_widget(self.friends_screen)
+        self.current_screen = self.friends_screen
 
     def show_new_loan_screen(self, friend_name):
         self.remove_widget(self.current_screen)
@@ -65,12 +73,12 @@ class MainScreen(AndroidTabs):
             self.dashboard.balance_label.text = "Saldo: {}".format(str(balance))
 
 
-class MembersScreen(BoxLayout):
-    pass
+class FriendsScreen(BoxLayout):
 
-
-class MemberButton(ListItemButton):
-    pass
+    def populate_list(self):
+        friends = api.get_friends()
+        names = [name for name, balance in friends.items()]
+        self.friends_list.adapter.data = names
 
 
 class NewLoanScreen(BoxLayout):
@@ -103,8 +111,13 @@ class Bar(ActionBar):
 class DashboardTab(BoxLayout, AndroidTabsBase):
     balance_label = ObjectProperty()
 
-    def populate_listview(self):
-        items = ["History number %i" % index for index in range(30)]
+    def args_converter(self, index, data_item):
+        name, balance = data_item
+        return {'text': "{}: {}".format(name, balance),
+                'name': name, 'balance': balance}
+
+    def populate_listview(self, friends):
+        items = [(name, balance) for name, balance in friends.items()]
         self.listview.adapter.data = items
 
 
@@ -115,7 +128,8 @@ class HistoryTab(BoxLayout, AndroidTabsBase):
 class NostraPlata(App):
 
     def on_start(self):
-        self.root.main.dashboard.populate_listview()
+        self.root.get_friends()
+        self.root.main.dashboard.populate_listview(self.root.friends)
         self.root.main_screen = self.root.main
         self.root.current_screen = self.root.main
 
