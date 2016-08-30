@@ -35,6 +35,8 @@ class NostraRoot(BoxLayout):
 
     def show_main_screen(self):
         self.main.show_balance()
+        self.get_friends()
+        self.main.dashboard.populate_listview(self.friends)
 
         self.remove_widget(self.current_screen)
         self.add_widget(self.main_screen)
