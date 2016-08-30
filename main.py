@@ -11,7 +11,7 @@ Config.set('graphics', 'height', '700')
 from kivy.app import App
 from kivy.garden.androidtabs import AndroidTabsBase, AndroidTabs
 from kivy.lang import Builder
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, DictProperty
 from kivy.uix.actionbar import ActionBar
 from kivy.uix.behaviors.togglebutton import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
@@ -28,6 +28,10 @@ class NostraRoot(BoxLayout):
     friends_screen = ObjectProperty()
     new_loan_screen = ObjectProperty()
     current_screen = ObjectProperty()
+    friends = DictProperty()
+
+    def get_friends(self):
+        self.friends = api.get_friends()
 
     def show_main_screen(self):
         self.main.show_balance()
@@ -123,6 +127,7 @@ class HistoryTab(BoxLayout, AndroidTabsBase):
 class NostraPlata(App):
 
     def on_start(self):
+        self.root.get_friends()
         self.root.main.dashboard.populate_listview()
         self.root.main_screen = self.root.main
         self.root.current_screen = self.root.main
